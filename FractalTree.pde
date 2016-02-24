@@ -1,6 +1,9 @@
 private double fractionLength = .8; 
 private int smallestBranch = 10; 
 private double branchAngle = .2;  
+private int r = 0;
+private int g = 255;
+private int b = 0;
 public void setup() 
 {   
 	size(640,480);    
@@ -9,7 +12,7 @@ public void setup()
 public void draw() 
 {   
 	background(0);   
-	stroke(0,255,0);   
+	stroke(r,g,b);   
 	line(320,480,320,380); 
 
 	drawBranches(320,380,100,3*Math.PI/2);  //will add later 
@@ -32,3 +35,31 @@ public void drawBranches(int x,int y, double branchLength, double angle)
 	}
 	//your code here    
 } 
+
+public void keyTyped()
+{
+
+   if(int(key) == 'x')
+   {
+   	fractionLength = fractionLength - 0.01;
+   	b = b - 10;
+   }
+   if(int(key) == 'z')
+   {
+   	 fractionLength = fractionLength + 0.01;
+   	 b = b + 10;
+   }
+   if(int(key) == 'a')
+   {
+   	 branchAngle = branchAngle + 0.01;
+   	   	r = r + 50;
+   	   	g = g - 30;
+   	}
+   if(int(key) == 's')
+   {
+   	 branchAngle = branchAngle - 0.01;
+   	 g = g + 20;
+   	 r = r- 10;
+   }
+    redraw();
+}
